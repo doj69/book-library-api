@@ -3,7 +3,7 @@ from typing import Union
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import scoped_session, sessionmaker, Session
+from sqlalchemy.orm import Session, scoped_session, sessionmaker
 
 from core.config import config
 

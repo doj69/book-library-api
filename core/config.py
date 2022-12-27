@@ -6,16 +6,16 @@ from pydantic import BaseSettings
 
 class Config(BaseSettings):
     ENV: str = "development"
-    DEBUG: bool = True
+    DEBUG: bool = False
 
     APP_HOST: str = "localhost"
-    APP_PORT: int = 8030
+    APP_PORT: int = 8050
     DB_URL: Optional[str] = None
 
     JWT_SECRET_KEY: str = (
         "3VxUX2uAUkCUSCah8Vl3mwVSy60ScTikyIZT6QkW2nxg3nL9MVXjl0qn_R1GDtIHtw"
     )
-    JWT_ALGORITHM: str = "SHA256"
+    JWT_ALGORITHM: str = "HS256"
 
     CELERY_BROKER_URL: str = "amqp://user:bitnami@localhost:5672/"
     CELERY_BACKEND_URL: str = "redis://:password123@localhost:6379/0"
@@ -26,7 +26,7 @@ class Config(BaseSettings):
     DATABASE_HOSTNAME: str = "localhost"
     DATABASE_PORT: int = 5432
     DATABASE_PASSWORD: str = "Pass.123"
-    DATABASE_NAME: str = "whitelabel"
+    DATABASE_NAME: str = "library-db-local"
     DATABASE_USERNAME: str = "postgres"
 
     SECRET_KEY: str = (

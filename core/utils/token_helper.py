@@ -24,7 +24,9 @@ class TokenHelper:
     def decode(token: str) -> Mapping[dict, NoReturn]:
         try:
             return jwt.decode(
-                jwt=token, key=config.JWT_SECRET_KEY, algorithms=[config.JWT_ALGORITHM]
+                jwt=token,
+                key=config.JWT_SECRET_KEY,
+                algorithms=[config.JWT_ALGORITHM],
             )
         except jwt.exceptions.DecodeError:
             raise DecodeTokenException
@@ -35,7 +37,9 @@ class TokenHelper:
     def decode_expired_token(token: str) -> Mapping[dict, NoReturn]:
         try:
             return jwt.decode(
-                jwt=token, key=config.JWT_SECRET_KEY, algorithms=[config.JWT_ALGORITHM]
+                jwt=token,
+                key=config.JWT_SECRET_KEY,
+                algorithms=[config.JWT_ALGORITHM],
             )
         except jwt.exceptions.DecodeError:
             raise DecodeTokenException

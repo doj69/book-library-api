@@ -1,18 +1,17 @@
-from .base import (
-    CustomException,
+from core.exceptions.base import (
     BadRequestException,
-    NotFoundException,
-    ForbiddenException,
-    UnprocessableEntity,
+    CustomException,
     DuplicateValueException,
+    ForbiddenException,
+    NotFoundException,
     UnauthorizedException,
+    UnprocessableEntity,
 )
-from .token import DecodeTokenException, ExpiredTokenException
-from .user import (
+from core.exceptions.token import DecodeTokenException, ExpiredTokenException
+from core.exceptions.user import (
+    DuplicateEmailOrUsernameException,
     PasswordDoesNotMatchException,
-    DuplicateEmailOrNicknameException,
 )
-
 
 __all__ = [
     "CustomException",
@@ -25,5 +24,5 @@ __all__ = [
     "DecodeTokenException",
     "ExpiredTokenException",
     "PasswordDoesNotMatchException",
-    "DuplicateEmailOrNicknameException",
+    "DuplicateEmailOrUsernameException",
 ]

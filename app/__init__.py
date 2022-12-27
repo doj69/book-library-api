@@ -2,6 +2,10 @@ import logging
 from datetime import date
 from logging.config import dictConfig
 
+from fastapi import Depends, FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+
 from api import router
 from core.config import config
 from core.di import init_di
@@ -18,9 +22,6 @@ from core.fastapi.middlewares.logging import (
     mkdir_p,
 )
 from core.log_config import LogConfig
-from fastapi import Depends, FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 
 logger = logging.getLogger(__name__)
 
@@ -82,8 +83,8 @@ def init_middleware(app: FastAPI) -> None:
 
 def create_app() -> FastAPI:
     app = FastAPI(
-        title="COBO API",
-        description="COMPANY BO API",
+        title="BOOK LIBRARY API",
+        description="BOOK LIBRARY API",
         version="1.0.0",
         docs_url=None if config.ENV == "production" else "/docs",
         redoc_url=None if config.ENV == "production" else "/redoc",

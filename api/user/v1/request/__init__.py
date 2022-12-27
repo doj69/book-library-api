@@ -1,7 +1,5 @@
-from .user import CreateUserRequest, UpdatePasswordRequest
-
+from .user import CreateUserRequest
 
 __all__ = [
     "CreateUserRequest",
-    "UpdatePasswordRequest",
 ]

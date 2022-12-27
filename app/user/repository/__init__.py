@@ -1,5 +1,4 @@
-from .user import UserRepo, UserPostgresRepo
-
+from app.user.repository.user import UserPostgresRepo, UserRepo
 
 __all__ = [
     "UserRepo",

@@ -1,5 +1,3 @@
-from core.db import Base
-from core.db.mixins import BaseModelMixin
 from sqlalchemy import (
     Column,
     DateTime,
@@ -11,11 +9,13 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 
+from core.db import Base
+from core.db.mixins import BaseModelMixin
+
 
 class AccountUser(Base, BaseModelMixin):
     __tablename__ = "account_user"
 
-    group_code = Column(String(20), nullable=False)
     role_id = Column(
         Integer, ForeignKey("account_role_permission.id", ondelete="RESTRICT")
     )
@@ -25,7 +25,7 @@ class AccountUser(Base, BaseModelMixin):
     username = Column(String(255), unique=True, nullable=False)
     hash_password = Column(String(255), nullable=False)
     temp_password = Column(String(255), nullable=True)
-    token = Column(Text, nullable=True)
+    access_token = Column(Text, nullable=True)
     refresh_token = Column(Text, nullable=True)
     fullname = Column(String(255), nullable=True)
     email = Column(String(255), nullable=True)

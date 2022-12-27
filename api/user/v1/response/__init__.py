@@ -1,7 +1,5 @@
-from .user import CreateUserResponse, GetUserResponse
-
+from .user import CreateUserResponse
 
 __all__ = [
     "CreateUserResponse",
-    "GetUserResponse",
 ]

@@ -1,14 +1,21 @@
-from datetime import datetime
-from typing import Optional
-
 from pydantic import BaseModel
 
 
+class UserRoleSchema(BaseModel):
+    id: int
+    role_name: str
+    role_permissions: list
+
+    class Config:
+        orm_mode = True
+
+
 class UserSchema(BaseModel):
-    id: Optional[int]
-    password: Optional[str]
-    email: Optional[str]
-    nickname: Optional[str]
-    is_admin: Optional[bool]
-    created_at: Optional[datetime]
-    updated_at: Optional[datetime]
+    id: int
+    email: str
+    username: str
+    status: str
+    role: UserRoleSchema
+
+    class Config:
+        orm_mode = True

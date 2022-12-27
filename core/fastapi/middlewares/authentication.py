@@ -8,6 +8,7 @@ from starlette.middleware.authentication import (
 from starlette.requests import HTTPConnection
 
 from core.config import config
+
 from ..schemas import CurrentUser
 
 
@@ -16,7 +17,7 @@ class AuthBackend(AuthenticationBackend):
         self, conn: HTTPConnection
     ) -> Tuple[bool, Optional[CurrentUser]]:
         current_user = CurrentUser()
-        authorization: str = conn.headers.get("Authorization")
+        authorization: Optional[str] = conn.headers.get("Authorization")
         if not authorization:
             return False, current_user
 
@@ -32,13 +33,15 @@ class AuthBackend(AuthenticationBackend):
 
         try:
             payload = jwt.decode(
-                credentials, config.JWT_SECRET_KEY, algorithms=[config.JWT_ALGORITHM],
+                credentials,
+                config.JWT_SECRET_KEY,
+                algorithms=[config.JWT_ALGORITHM],
             )
-            user_id = payload.get("user_id")
+            user = payload.get("sub")
         except jwt.exceptions.PyJWTError:
             return False, current_user
 
-        current_user.id = user_id
+        current_user = current_user.parse_obj(user)
         return True, current_user
 
 

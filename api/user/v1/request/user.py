@@ -1,31 +1,33 @@
 from pydantic import BaseModel
 
+from core.enums import Role
+
 
 class CreateUserRequest(BaseModel):
     email: str
-    password1: str
-    password2: str
-    nickname: str
+    username: str
+    password: str
+    role: Role
 
     class Config:
         schema_extra = {
             "example": {
                 "email": "hide@hide.com",
-                "password1": "pw",
-                "password2": "pw",
-                "nickname": "hide",
+                "username": "hide",
+                "password": "password",
+                "role": "role",
             }
         }
 
 
-class UpdatePasswordRequest(BaseModel):
-    password1: str
-    password2: str
+# class UserLoginRequest(BaseModel):
+#     username: str
+#     password: str
 
-    class Config:
-        schema_extra = {
-            "example": {
-                "password1": "pw",
-                "password2": "pw",
-            }
-        }
+#     class Config:
+#         schema_extra = {
+#             "example": {
+#                 "username": "hide",
+#                 "password": "password",
+#             }
+#         }
