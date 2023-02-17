@@ -8,11 +8,16 @@ import string
 import sys
 import time
 
-from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
+from starlette.middleware.base import (
+    BaseHTTPMiddleware,
+    RequestResponseEndpoint,
+)
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
 
-http_request_context = contextvars.ContextVar("http_request_context", default=dict({}))
+http_request_context = contextvars.ContextVar(
+    "http_request_context", default=dict({})
+)
 
 
 def mkdir_p(path):
@@ -68,7 +73,9 @@ class LogRequestMiddleware(BaseHTTPMiddleware):
         self, request: Request, call_next: RequestResponseEndpoint
     ) -> Response:
 
-        idem = "".join(random.choices(string.ascii_uppercase + string.digits, k=6))
+        idem = "".join(
+            random.choices(string.ascii_uppercase + string.digits, k=6)
+        )
         logger.info(f"rid={idem} start request path={request.url.path}")
         start_time = time.time()
 
