@@ -1,4 +1,4 @@
-## <center>WLB-BACKEND API > FASTAPI</center>
+## <center>BOOK LIBRARY API > FASTAPI</center>
 
 - ### Pre-requirements
 
